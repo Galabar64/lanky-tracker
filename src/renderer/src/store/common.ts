@@ -16,6 +16,7 @@ type RainbowCoinRange = IntRange<0, 17>
 type SlamRange = IntRange<0, 4>
 export type BananaportRange = IntRange<0, 3>
 export type KongRange = IntRange<0, 5>
+export type NoteItemCheckRange = IntRange<0, 27>
 
 export const nameof = <T>(name: Extract<keyof T, string>): string => name
 
@@ -254,15 +255,20 @@ export type ConsumablesSlice = ConsumablesState & ConsumablesActions
 //#endregion
 
 //#region Checks
+export interface CheckValueState {
+  done: boolean
+  noteItem: NoteItemCheckRange
+}
+
 export interface CheckState {
   /**
    * Which checks have been found at this point?
    */
-  checks: Record<number, boolean>
+  checks: Record<number, CheckValueState>
 }
 
 interface CheckActions {
-  setCheck: (id: number, val: boolean) => void
+  setCheck: (id: number, val: CheckValueState) => void
 }
 
 export type CheckSlice = CheckState & CheckActions

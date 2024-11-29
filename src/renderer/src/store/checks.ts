@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { AllSlice, CheckSlice, CheckState, donkResetFns } from './common'
+import { AllSlice, CheckSlice, CheckState, CheckValueState, donkResetFns } from './common'
 
 export const initialChecks: CheckState = {
   checks: {}
@@ -11,7 +11,7 @@ const coreSlice: StateCreator<AllSlice, [], [], CheckSlice> = (set) => {
     ...initialChecks,
     setCheck: (id, val) =>
       set((state) => {
-        const newKey: Record<number, boolean> = {}
+        const newKey: Record<number, CheckValueState> = {}
         newKey[id] = val
         state = {
           ...state,

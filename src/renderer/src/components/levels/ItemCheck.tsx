@@ -1,7 +1,8 @@
 import { useShallow } from 'zustand/react/shallow'
 
 import useDonkStore from '@renderer/store'
-import { Level, SelectableRegionValues } from '@renderer/store/common'
+import { CheckValueState, Level, SelectableRegionValues } from '@renderer/store/common'
+import ItemCheckSelector from '../settings/ItemCheckSelector'
 
 export type LevelCheckProps = {
   id: number
@@ -13,11 +14,11 @@ export type LevelCheckProps = {
 
 type ItemCheckProps = LevelCheckProps & {
   level: Level
-  done?: boolean
+  value?: CheckValueState
 }
 
 const ItemCheck: React.FC<ItemCheckProps> = (props) => {
-  const { id, name, region, done, canGetLogic } = props
+  const { id, name, region, value, canGetLogic } = props
   let { canGetBreak } = props
   const [setCheck, foolish, hoard] = useDonkStore(
     useShallow((state) => [state.setCheck, state.foolish, state.hoard])
@@ -37,7 +38,7 @@ const ItemCheck: React.FC<ItemCheckProps> = (props) => {
   }
 
   const rowNames: string[] = ['check-row']
-  if (done) {
+  if (value?.done) {
     rowNames.push('checked')
   }
   if (isFoolish) {
@@ -57,12 +58,14 @@ const ItemCheck: React.FC<ItemCheckProps> = (props) => {
       </div>
       <div className={classNames}>{region}</div>
       <div className={classNames}>
+        <ItemCheckSelector id={id} />
+        <span>&nbsp;&nbsp;</span>
         <input
           key={'checkbox-' + id}
           type="checkbox"
           name={'checkbox-' + id}
-          checked={!!done}
-          onChange={(e) => setCheck(id, e.target.checked)}
+          checked={!!value?.done}
+          onChange={(e) => setCheck(id, { done: e.target.checked, noteItem: value?.noteItem ?? 0 })}
         />
       </div>
     </>
