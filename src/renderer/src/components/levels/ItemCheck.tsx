@@ -2,7 +2,7 @@ import { useShallow } from 'zustand/react/shallow'
 
 import useDonkStore from '@renderer/store'
 import { CheckValueState, Level, SelectableRegionValues } from '@renderer/store/common'
-import ItemCheckSelector from '../settings/ItemCheckSelector'
+import NoteItemCheckSelector from '../settings/NoteItemCheckSelector'
 
 export type LevelCheckProps = {
   id: number
@@ -58,7 +58,7 @@ const ItemCheck: React.FC<ItemCheckProps> = (props) => {
       </div>
       <div className={classNames}>{region}</div>
       <div className={classNames}>
-        <ItemCheckSelector id={id} />
+        <NoteItemCheckSelector id={id} />
         <span>&nbsp;&nbsp;</span>
         <input
           key={'checkbox-' + id}

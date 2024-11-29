@@ -34,7 +34,7 @@ import lankyFace from '../../assets/images/lanky.png'
 import tinyFace from '../../assets/images/tiny.png'
 import unknownFace from '../../assets/images/unknown-small.png'
 
-type ItemCheckSelectorProps = {
+type NoteItemCheckSelectorProps = {
   id: number
 }
 
@@ -117,7 +117,7 @@ const prevNoteItem = (val: CheckValueState): CheckValueState => {
   return val
 }
 
-const ItemCheckSelector: React.FC<ItemCheckSelectorProps> = (props) => {
+const NoteItemCheckSelector: React.FC<NoteItemCheckSelectorProps> = (props) => {
   const [checkValue, setCheck] = useDonkStore((state) => [state.checks[props.id], state.setCheck])
 
   const handleNext = (): void => {
@@ -143,4 +143,4 @@ const ItemCheckSelector: React.FC<ItemCheckSelectorProps> = (props) => {
   )
 }
 
-export default ItemCheckSelector
+export default NoteItemCheckSelector
