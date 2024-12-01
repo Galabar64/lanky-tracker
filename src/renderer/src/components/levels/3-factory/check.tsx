@@ -14,7 +14,7 @@ const FactoryCheck: React.FC<LevelCheckProps> = (props) => {
         region={props.region}
         canGetLogic={props.canGetLogic}
         canGetBreak={props.canGetBreak}
-        done={checks[props.id]}
+        value={checks[props.id]}
       />
     </>
   )

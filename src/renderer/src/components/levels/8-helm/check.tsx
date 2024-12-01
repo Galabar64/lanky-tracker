@@ -14,7 +14,7 @@ const HelmCheck: React.FC<LevelCheckProps> = (props) => {
         region="Hideout Helm"
         canGetLogic={props.canGetLogic}
         canGetBreak={props.canGetBreak}
-        done={checks[props.id]}
+        value={checks[props.id]}
       />
     </>
   )

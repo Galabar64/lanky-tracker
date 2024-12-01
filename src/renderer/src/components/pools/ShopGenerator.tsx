@@ -71,7 +71,7 @@ const SingleShopCheck: React.FC<ShopGeneratorProps> = (props) => {
       name={`${props.baseName} ${kongName}`}
       canGetLogic={props.inLogic && kongBool}
       canGetBreak={outLogic && kongBool}
-      done={checks[props.baseId]}
+      value={checks[props.baseId]}
     />
   )
 }
